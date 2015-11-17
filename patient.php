@@ -95,9 +95,9 @@
 
             // Confirm success with the user
             echo '<p>Thanks for adding your new high score! It will be reviewed and added to the high score list as soon as possible.</p>';
-            echo '<p><strong>Name:</strong> ' . $pid . '<br />';
-            echo '<strong>Score:</strong> ' . $pname . '<br />';
-            echo '<img src="' . 'files/' . $report . '" alt="Score image" /></p>';
+            echo '<p><strong>ID:<strong> ' . $pid . '<br />';
+            echo '<strong>Name:</strong> ' . $pname . '<br />';
+            echo '<a href="' . 'files/' . $report . '" target="_blank" />view file</a></p>';
              
 
             // Clear the score data to clear the form
