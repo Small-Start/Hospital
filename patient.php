@@ -21,7 +21,7 @@
     <div>
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
-       <li>   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+      <li>   <a type="button" data-toggle="modal" data-target="#myModal">Register</a>
 
 
 <div id="myModal" class="modal fade" role="dialog">
