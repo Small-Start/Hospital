@@ -1,13 +1,25 @@
-<html>
+<html ng-app="health">
 <head>
+  <style>
+ .box-shadow{
+  box-shadow:0 0 10px 0 rgba(0,0,0,.10);
+  height:200px;
+  margin:1%;
+  padding:6%;
+ }
+  </style>
 	<title>Patient page</title>
+
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="angular.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
 </head>
-<body>
+<body ng-controller="healthcontroller">
 
   
   
@@ -38,15 +50,15 @@
 <div class="col-md-offset-3 col-md-6">
 <form  enctype="multipart/form-data" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
   <div class="form-group">
-    <label for="pid">Patient id:</label>
+    <label for="pid"><h4>Patient id:</h4></label>
      <input type="text" class="form-control" id="pid" name="pid">
   </div>
   <div class="form-group">
-    <label for="pname">Patient Name:</label>
+    <label for="pname"><h4>Patient Name:</h4></label>
     <input type="text" class="form-control" id="pname" name="pname">
   </div>
   <div>
-   <label for="report">Patient Reports:</label>
+   <label for="report"><h4>Patient Reports:</h4></label>
 	<input type="file" id="report" name="report">
   </div>
   <button type="submit" name="submit" class="btn btn-primary">Upload</button>
@@ -122,6 +134,26 @@
     }
   
 ?>
-
+<div ng-repeat="name in data " class=" row">
+  
+    <div class="col-md-4 col-xs-12 col-sm-12"></div>
+   <div class="col-md-4 col-xs-12 col-sm-12 box-shadow">
+    <div class="row">
+     <div class="col-md-6 col-xs-12 col-sm-12">Patient Id</div>
+      <div class="col-md-6 col-xs-12 col-sm-12">{{name.p_id}}</div>
+    </div>
+  <div class="row">
+     <div class="col-md-6 col-xs-12 col-sm-12">Patient Name</div>
+      <div class="col-md-6 col-xs-12 col-sm-12">{{name.p_name}}</div>
+    </div>
+  <div class="row">
+     <div class="col-md-6 col-xs-12 col-sm-12">Patient Report</div>
+      <div class="col-md-6 col-xs-12 col-sm-12"><a href="files/{{name.p_file}}" target="_blank">{{name.p_file}}</a></div>
+    </div>
+  
+   </div>
+<div class="col-md-4"></div>
+ 
+</div>
 </body>
 </html>

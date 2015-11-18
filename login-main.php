@@ -1,10 +1,4 @@
-<html>
-<head>
-	<title>Main page</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
-</head>
-<body>
 <div class="row">
 <div class="col-md-offset-3 col-md-6">
 <form role=" form">
@@ -27,5 +21,3 @@
 </form>
 </div>
 </div>
-</body>
-</html>
