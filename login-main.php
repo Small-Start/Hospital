@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 
-=======
 <?php
  // Start the session
   session_start();
@@ -57,7 +55,7 @@
   if (empty($_SESSION['username'])) {
     echo '<p class="error">' . $error_msg . '</p>';
 ?>
->>>>>>> d4961c069d4d1573a67a931c8a8169682af248bc
+
 <div class="row">
 <div class="col-md-offset-3 col-md-6">
 <form role=" form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -80,8 +78,7 @@
 </form>
 </div>
 </div>
-<<<<<<< HEAD
-=======
+
 <?php
   }
   else {
@@ -91,4 +88,4 @@
 ?>
 </body>
 </html>
->>>>>>> d4961c069d4d1573a67a931c8a8169682af248bc
+

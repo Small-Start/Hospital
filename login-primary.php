@@ -62,7 +62,7 @@
   </div>
   <div class="form-group">
     <label for="hospitalid">Hospital Id</label><input type="text" class="form-control" name="hospitalid" id="hospitalid">
-     <label for="hospitalpass">Hospital Password</label><input type="text" class="form-control" name="hospitalpass" id="hospitalpass">
+     <label for="hospitalpass">Hospital Password</label><input type="password" class="form-control" name="hospitalpass" id="hospitalpass">
   
   </div>
   <div>
