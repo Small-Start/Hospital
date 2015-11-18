@@ -5,7 +5,7 @@
  // Clear the error message
   $error_msg = "";
 // If the user isn't logged in, try to log them in
-  if (!isset($_SESSION['username'])) {
+  if (!isset($_SESSION['usermain'])) {
     if (isset($_POST['submit'])) {
       // Connect to the database
       $dbc = mysqli_connect('localhost','root','','healthcare');
@@ -16,14 +16,14 @@
 
       if (!empty($user_username) && !empty($user_password)) {
         // Look up the username and password in the database
-        $query = "SELECT username FROM user_main WHERE username = '$user_username' AND password = '$user_password'";
+        $query = "SELECT usermain FROM user_main WHERE usermain = '$user_username' AND password = '$user_password'";
         $data = mysqli_query($dbc, $query);
 
         if (mysqli_num_rows($data) == 1) {
           // The log-in is OK so set the user ID and username session vars (and cookies), and redirect to the home page
           $row = mysqli_fetch_array($data);
-          $_SESSION['username'] = $row['username'];
-          setcookie('username', $row['username'], time() + (60 * 60 * 24 * 30));  // expires in 30 days
+          $_SESSION['usermain'] = $row['usermain'];
+          setcookie('usermain', $row['usermain'], time() + (60 * 60 * 24 * 30));  // expires in 30 days
           $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/mainhospital.php';
           header('Location: ' . $home_url);
         }
@@ -52,7 +52,7 @@
 <body>
 <?php
   // If the session var is empty, show any error message and the log-in form; otherwise confirm the log-in
-  if (empty($_SESSION['username'])) {
+  if (empty($_SESSION['usermain'])) {
     echo '<p class="error">' . $error_msg . '</p>';
 ?>
 
@@ -84,7 +84,7 @@
   }
   else {
     // Confirm the successful log-in
-    echo('<p class="login">You are logged in as ' . $_SESSION['username'] . '.</p>');
+    echo('<p class="login">You are logged in as ' . $_SESSION['usermain'] . '.</p>');
   }
 ?>
 </body>
