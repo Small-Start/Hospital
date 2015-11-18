@@ -57,13 +57,14 @@
 <div class="col-md-offset-3 col-md-6">
 <form role=" form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
   <div class="form-group">
-    <label for="login"><h4>Login-Primary</h4></label>
+    <label for="login"><h4>Login-Village</h4></label>
    
   </div>
   <div class="form-group">
     <label for="hospitalid">Hospital Id</label><input type="text" class="form-control" name="hospitalid" id="hospitalid">
      <label for="hospitalpass">Hospital Password</label><input type="password" class="form-control" name="hospitalpass" id="hospitalpass">
-  
+      <label for="phosname">Village Hospital Name</label><input type="text" class="form-control" name="phosname" id="phosname">
+
   </div>
   <div>
     

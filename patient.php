@@ -38,11 +38,7 @@
 </head>
 <body ng-controller="healthcontroller">
 
- <?php
-if (isset($_SESSION['username'])) {
-    echo '&#10084; <a href="logout.php">Log Out (' . $_SESSION['username'] . ')</a>';
-  }
-  ?> 
+
    <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -51,6 +47,7 @@ if (isset($_SESSION['username'])) {
     <div>
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
+
       <li>   <a type="button" data-toggle="modal" data-target="#myModal">Register</a>
 
 
@@ -93,6 +90,11 @@ if (isset($_SESSION['username'])) {
   </div>
 </div>
   </li>
+         <li> <?php
+if (isset($_SESSION['username'])) {
+    echo  '<a href="logout.php">Log Out (' . $_SESSION['username'] . ')</a>';
+  }
+  ?> </li>
       </ul>
     </div>
   </div>
@@ -148,7 +150,7 @@ if (isset($_SESSION['username'])) {
       @unlink($_FILES['report']['tmp_name']);
     }
     else {
-      echo '<p class="error">Please enter all of the information to add your high score.</p>';
+      
     }
   
 ?>

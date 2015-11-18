@@ -66,6 +66,7 @@
   <div class="form-group">
     <label for="mainid">Username</label><input type="text" class="form-control" name="mainid"  id="mainid">
      <label for="mainpass">Password</label><input type="password" class="form-control" name="mainpass" id="mainpass">
+     <label for="hosname">Hospital Name</label><input type="text" class="form-control" name="hosname" id="hosname">
   
   </div>
   <div>
