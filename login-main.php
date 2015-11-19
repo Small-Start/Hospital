@@ -43,7 +43,7 @@
   }
 ?>
 
-<html>
+<html >
 <head>
 	<title>Main page</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -64,10 +64,12 @@
    
   </div>
   <div class="form-group">
-    <label for="mainid">Username</label><input type="text" class="form-control" name="mainid"  id="mainid">
+    <label for="mainid">City Hospital Name</label>
+    <select class="form-control"  id="mainid" name="mainid">
+    <option ng-repeat="hospital in data" value="{{hospital.usermain}}">{{hospital.usermain}}</option>
+    </select>
      <label for="mainpass">Password</label><input type="password" class="form-control" name="mainpass" id="mainpass">
-     <label for="hosname">Hospital Name</label><input type="text" class="form-control" name="hosname" id="hosname">
-  
+     
   </div>
   <div>
     

@@ -61,11 +61,12 @@
    
   </div>
   <div class="form-group">
-    <label for="hospitalid">Hospital Id</label><input type="text" class="form-control" name="hospitalid" id="hospitalid">
+      <label for="mainid">Village Hospital Name</label>
+    <select class="form-control"  id="hospitalid" name="hospitalid">
+    <option ng-repeat="hospital in data" value="{{hospital.username}}">{{hospital.username}}</option>
+    </select>
      <label for="hospitalpass">Hospital Password</label><input type="password" class="form-control" name="hospitalpass" id="hospitalpass">
-      <label for="phosname">Village Hospital Name</label><input type="text" class="form-control" name="phosname" id="phosname">
-       <label for="phosname">City Hospital Name</label><input type="text" class="form-control" name="phosname" id="phosname">
-  </div>
+       </div>
   <div>
     
    <button type="submit" class="btn btn-primary" name="submit">Login</button>

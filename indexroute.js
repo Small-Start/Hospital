@@ -8,15 +8,15 @@ indexapp.config(['$routeProvider',function($routeProvider){
 	})
 	.when('/primary',{
 		templateUrl:'login-primary.php',
-		
+		controller:'primarycontroller'
 	})
 	.when('/main',{
 		templateUrl:'login-main.php',
-	
+	    controller:'indexcontroller'
 	})
 }]);
 
-indexapp.controller('maincontroller',function($scope,$interval,$apply){
+indexapp.controller('maincontroller',function($scope){
 
 	/*$apply(){
 		 $interval(function select(style){
@@ -34,3 +34,15 @@ indexapp.controller('maincontroller',function($scope,$interval,$apply){
   */       
          	         
 });
+indexapp.controller('indexcontroller',function($scope,$http){
+  $http.get("http://localhost/hospital/jsonmain.php")
+  .success(function (data) {$scope.data = data;
+  console.log($scope.data)});
+  
+});
+indexapp.controller('primarycontroller',function($scope,$http){
+  $http.get("http://localhost/hospital/jsonprimary.php")
+  .success(function (data) {$scope.data = data;
+  console.log($scope.data)});
+  
+})
