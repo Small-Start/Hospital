@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 18, 2015 at 01:15 PM
+-- Generation Time: Nov 19, 2015 at 10:03 AM
 -- Server version: 5.1.36
 -- PHP Version: 5.3.0
 
@@ -26,14 +26,18 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE IF NOT EXISTS `user_main` (
-  `username` varchar(15) NOT NULL,
+  `usermain` varchar(30) NOT NULL,
   `password` varchar(40) NOT NULL,
-  UNIQUE KEY `username` (`username`)
+  `address` varchar(100) NOT NULL,
+  UNIQUE KEY `username` (`usermain`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_main`
 --
 
-INSERT INTO `user_main` (`username`, `password`) VALUES
-('safdarganj', 'abc123');
+INSERT INTO `user_main` (`usermain`, `password`, `address`) VALUES
+('Safdarjung Hospital', 'abc123', 'Ring Road, Opposite AIMS Hospital, Ansari Nagar West, Safdarjung, New Delhi, Delhi 110029'),
+('Deen Dayal Upadhyay Hospital', 'abc123', 'Hari Nagar, Ghanta Ghar, Clock Tower, New Delhi, Delhi 110064'),
+('Acharya Shree Bhikshu Hospital', 'abc123', 'Moti Nagar, New Delhi, Delhi 110015'),
+('CGHS Hospital', 'abc123', 'Tamil Sangam Marg, Sector 6, R.K. Puram, New Delhi, Delhi 110022');
