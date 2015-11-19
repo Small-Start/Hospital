@@ -64,7 +64,7 @@
     <label for="hospitalid">Hospital Id</label><input type="text" class="form-control" name="hospitalid" id="hospitalid">
      <label for="hospitalpass">Hospital Password</label><input type="password" class="form-control" name="hospitalpass" id="hospitalpass">
       <label for="phosname">Village Hospital Name</label><input type="text" class="form-control" name="phosname" id="phosname">
-
+       <label for="phosname">City Hospital Name</label><input type="text" class="form-control" name="phosname" id="phosname">
   </div>
   <div>
     

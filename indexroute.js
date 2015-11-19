@@ -3,6 +3,7 @@ indexapp.config(['$routeProvider',function($routeProvider){
 	$routeProvider
 	.when('/',{
 		templateUrl:'main.html',
+		controller:'maincontroller'
 	     
 	})
 	.when('/primary',{
@@ -14,3 +15,22 @@ indexapp.config(['$routeProvider',function($routeProvider){
 	
 	})
 }]);
+
+indexapp.controller('maincontroller',function($scope,$interval,$apply){
+
+	/*$apply(){
+		 $interval(function select(style){
+		 	$scope.style={'background-color':'red'}
+        if($scope.style={'background-color':'red'}){
+        	 console.log($scope.style);
+        	 $scope.style={'background-color':'green'};
+        	
+        }
+
+ 
+      
+    },1000);}
+      
+  */       
+         	         
+});

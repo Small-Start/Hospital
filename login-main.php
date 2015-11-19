@@ -47,7 +47,7 @@
 <head>
 	<title>Main page</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-
+<script type="text/javascript" src="backsketch.js/jquery.backsketch.min.js"></script>
 </head>
 <body>
 <?php
@@ -87,6 +87,14 @@
     echo('<p class="login">You are logged in as ' . $_SESSION['usermain'] . '.</p>');
   }
 ?>
+<script >
+$.backstretch([
+      "http://dl.dropbox.com/u/515046/www/outside.jpg"
+    , "http://dl.dropbox.com/u/515046/www/garfield-interior.jpg"
+    , "http://dl.dropbox.com/u/515046/www/cheers.jpg"
+  ], {duration: 3000, fade: 750});
+
+</script>
 </body>
 </html>
 
