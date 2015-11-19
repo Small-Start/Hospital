@@ -110,7 +110,8 @@ if (isset($_SESSION['username'])) {
     $pname = $_POST['pname'];
   $report = $_FILES['report']['name'];
     $report_type = $_FILES['report']['type'];
-    $report_size = $_FILES['report']['size']; 
+    $report_size = $_FILES['report']['size'];
+$hname=	$_SESSION['username'];
 
     if (!empty($pid) && !empty($pname) && !empty($report)) {
      
@@ -122,7 +123,7 @@ if (isset($_SESSION['username'])) {
             $dbc = mysqli_connect('localhost','root', '', 'healthcare');
 
             // Write the data to the database
-            $query = "INSERT INTO patient_file VALUES ( '$pid', '$pname', '$report')";
+            $query = "INSERT INTO patient_file VALUES ( '$pid', '$pname', '$report','$hname')";
             mysqli_query($dbc, $query);
 
             // Confirm success with the user
