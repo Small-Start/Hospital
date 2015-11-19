@@ -11,7 +11,7 @@
       $dbc = mysqli_connect('localhost','root','','healthcare');
 
       // Grab the user-entered log-in data
-      $user_username = mysqli_real_escape_string($dbc, trim($_POST['mainid']));
+      $user_username = $_POST['mainid'];
       $user_password = mysqli_real_escape_string($dbc, trim($_POST['mainpass']));
 
       if (!empty($user_username) && !empty($user_password)) {
