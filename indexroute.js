@@ -1,4 +1,4 @@
-var indexapp= angular.module('indexapp',['ngRoute'])
+var indexapp= angular.module('indexapp',['ngRoute','angular-loading-bar'])
 indexapp.config(['$routeProvider',function($routeProvider){
 	$routeProvider
 	.when('/',{
@@ -35,13 +35,13 @@ indexapp.controller('maincontroller',function($scope){
          	         
 });
 indexapp.controller('indexcontroller',function($scope,$http){
-  $http.get("http://localhost/hospital/jsonmain.php")
+  $http.get("http://localhost/hospitalp/jsonmain.php")
   .success(function (data) {$scope.data = data;
   console.log($scope.data)});
   
 });
 indexapp.controller('primarycontroller',function($scope,$http){
-  $http.get("http://localhost/hospital/jsonprimary.php")
+  $http.get("http://localhost/hospitalp/jsonprimary.php")
   .success(function (data) {$scope.data = data;
   console.log($scope.data)});
   

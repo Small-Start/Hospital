@@ -29,16 +29,22 @@
         else {
           // The username/password are incorrect so set an error message
           $error_msg = 'Sorry, you must enter a valid username and password to log in.';
+		  $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '#/primary';
+          header('Location: ' . $home_url);
         }
       }
       else {
         // The username/password weren't entered so set an error message
         $error_msg = 'Sorry, you must enter your username and password to log in.';
+		 $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '#/primary';
+          header('Location: ' . $home_url);
       }
     }
   }
   else{
 	  echo "session is created";
+	  $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/patient.php';
+          header('Location: ' . $home_url);
   }
 ?>
 <html>
@@ -47,6 +53,13 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
 </head>
+<style>
+form.ng-pristine.ng-valid{
+  padding:4%;
+  margin:12%;
+  background-color:rgba(70, 49, 49, 0.06);
+}
+</style>
 <body>
 <?php
   // If the session var is empty, show any error message and the log-in form; otherwise confirm the log-in
@@ -57,15 +70,15 @@
 <div class="col-md-offset-3 col-md-6">
 <form role=" form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
   <div class="form-group">
-    <label for="login"><h4>Login-Village</h4></label>
+    <label for="login"><h3>Login-Village</h3></label>
    
   </div>
   <div class="form-group">
-      <label for="mainid">Village Hospital Name</label>
+      <label for="mainid"></label>
     <select class="form-control"  id="hospitalid" name="hospitalid">
     <option ng-repeat="hospital in data" value="{{hospital.username}}">{{hospital.username}}</option>
     </select>
-     <label for="hospitalpass">Hospital Password</label><input type="password" class="form-control" name="hospitalpass" id="hospitalpass">
+     <label for="hospitalpass"></label><input placeholder="password" type="password" class="form-control" name="hospitalpass" id="hospitalpass">
        </div>
   <div>
     

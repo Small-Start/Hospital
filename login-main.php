@@ -29,25 +29,45 @@
         }
         else {
           // The username/password are incorrect so set an error message
-          $error_msg = 'Sorry, you must enter a valid username and password to log in.';
+         
+		  $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '#/main';
+          header('Location: ' . $home_url);
+		   $error_msg = 'Sorry, you must enter a valid username and password to log in.';
         }
       }
       else {
         // The username/password weren't entered so set an error message
-        $error_msg = 'Sorry, you must enter your username and password to log in.';
+        $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '#/main';
+          header('Location: ' . $home_url);
+		   $error_msg = 'Sorry, you must enter a valid username and password to log in.';
       }
     }
   }
   else{
 	  echo "session is created";
+	  $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/mainhospital.php';
+	   header('Location: ' . $home_url);
   }
 ?>
+<style>
+form.ng-pristine.ng-valid {
+    background-color: #F1F1F1;
+    padding: 4%;
+    margin: 12%;
+    background-color:rgba(70, 49, 49, 0.06);
+}
+body{
+font-family: 'Montserrat', sans-serif;
+}
 
+</style>
 <html >
 <head>
 	<title>Main page</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <script type="text/javascript" src="backsketch.js/jquery.backsketch.min.js"></script>
+
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <?php
@@ -60,15 +80,15 @@
 <div class="col-md-offset-3 col-md-6">
 <form role=" form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
   <div class="form-group">
-    <label for="login"><h4>Login-Main</h4></label>
+    <label class="text-center city" for="login"><h3><b>Login-City</b></h3></label>
    
   </div>
-  <div class="form-group">
-    <label for="mainid">City Hospital Name</label>
-    <select class="form-control"  id="mainid" name="mainid">
+  <div class="text-center form-group">
+    <label for="mainid" class="hs"></label>
+    <select class="form-control"   id="mainid" name="mainid">
     <option ng-repeat="hospital in data" value="{{hospital.usermain}}">{{hospital.usermain}}</option>
     </select>
-     <label for="mainpass">Password</label><input type="password" class="form-control" name="mainpass" id="mainpass">
+     <label for="mainpass" ></label><input type="password" placeholder="password" class="form-control" name="mainpass" id="mainpass">
      
   </div>
   <div>

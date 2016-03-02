@@ -2,17 +2,31 @@
 <head >
 	<title>Admin page</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="angular-loader/build/loading-bar.css">
 <script type="text/javascript" src="angular.min.js"></script>
 <script type="text/javascript" src="angular-route.min.js"></script>
 <script type="text/javascript" src="jquery.min.js"></script>
 <script type="text/javascript" src="jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="angular-loader/build/loading-bar.js"></script>
 <script src="indexroute.js"></script>
 
 
 </head>
+
 <body>
-	
+
 <div class="ng-view"></div>
 </body>
-<script></script>
+<script>
+ $.backstretch([
+      "HOSPITALHEART_1stblue.jpg",
+      "HOSPITALHEART1_midblue.jpg",
+      "HOSPITALHEART1_lastblue.jpg"    
+      ], {
+        fade: 1050,
+        duration: 500
+    });
+
+
+</script>
 </html>

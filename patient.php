@@ -1,8 +1,14 @@
-
+<?php
+header("Cache-Control: private, must-revalidate, max-age=0");
+  header("Pragma: no-cache");
+  header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+  ?>
 <html ng-app="health">
 
 <?php
+
   session_start();
+  
 
    // If the session vars aren't set, try to set them with a cookie
   if (!isset($_SESSION['username'])) {
@@ -19,15 +25,33 @@
 <head>
   <style>
  .box-shadow{
-  box-shadow:0 0 10px 0 rgba(0,0,0,.10);
-  height:200px;
+  box-shadow:0 0 10px 0 rgba(0,0,0,.40);
+  height:auto;
   margin:1%;
-  padding:6%;
+  padding:2%;
  }
+ .textarea{
+  margin:1%;
+  padding:1%;
+ }
+ .btn-primary{
+  margin:5%;
+ }
+ body{
+font-family: 'Montserrat', sans-serif;
+}
+.patient_info{
+  margin:2%;
+  padding:1%;
+}
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group{
+  font-size:20px;
+}
   </style>
 	<title>Patient page</title>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
@@ -35,14 +59,18 @@
 
 <script type="text/javascript" src="angular.min.js"></script>
 <script type="text/javascript" src="app.js"></script>
+<link rel="stylesheet" type="text/css" href="angular-loader/build/loading-bar.css">
+<script type="text/javascript" src="angular-loader/build/loading-bar.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 </head>
+
 <body ng-controller="healthcontroller">
 
-
-   <nav class="navbar navbar-default">
+ 
+   <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand" href="#">E-Village Aid</a>
     </div>
     <div>
       <ul class="nav navbar-nav">
@@ -72,6 +100,19 @@
     <label for="pname"><h4>Patient Name:</h4></label>
     <input type="text" class="form-control" id="pname" name="pname">
   </div>
+  <div class="form-group">
+    <label class="radio-inline"><input type="radio" name="gender" value="Male">Male</label>
+<label class="radio-inline"><input type="radio" name="gender" value="Female">Female</label>
+
+  </div>
+   <div class="form-group">
+    <label for="dob"><h4>Date Of Birth:</h4></label>
+    <input type="text" class="form-control" id="dob" name="dob" />
+  </div>
+  <div class="form-group">
+    <label for="dis"><h4>Disease:</h4></label>
+    <input type="text"  id="dis" name="dis" />
+  </div>
   <div>
    <label for="report"><h4>Patient Reports:</h4></label>
 	<input type="file" id="report" name="report">
@@ -95,11 +136,22 @@ if (isset($_SESSION['username'])) {
     echo  '<a href="logout.php">Log Out (' . $_SESSION['username'] . ')</a>';
   }
   ?> </li>
+
+
       </ul>
     </div>
   </div>
 </nav>
-  
+  <form class=" navbar-form " role="search">
+                <div class="col-md-offset-4 col-md-4 input-group">
+                    <input type="text" class="form-control" ng-model="patient" placeholder="Search this site">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default">
+                        <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </form>
    <div style="margin-top:2%"class="row"></div>
 <?php
  
@@ -108,12 +160,15 @@ if (isset($_SESSION['username'])) {
     // Grab the score data from the POST
     $pid = $_POST['pid'];
     $pname = $_POST['pname'];
+	$gender= $_POST['gender'];
+	$dob= $_POST['dob'];
+	$dis= $_POST['dis'];
   $report = $_FILES['report']['name'];
     $report_type = $_FILES['report']['type'];
     $report_size = $_FILES['report']['size'];
+	$status="Pending";
 $hname=	$_SESSION['username'];
-
-    if (!empty($pid) && !empty($pname) && !empty($report)) {
+     if (!empty($pid) && !empty($pname) && !empty($report) && !empty($gender)&& !empty($dob) && !empty($dis)) {
      
         if ($_FILES['report']['error'] == 0) {
           // Move the file to the target upload folder
@@ -123,7 +178,7 @@ $hname=	$_SESSION['username'];
             $dbc = mysqli_connect('localhost','root', '', 'healthcare');
 
             // Write the data to the database
-            $query = "INSERT INTO patient_file VALUES ( '$pid', '$pname', '$report','$hname')";
+            $query = "INSERT INTO patient_file(p_id,p_name,gender,dob,disease,p_file,ph_name,status) VALUES ( '$pid', '$pname','$gender','$dob','$dis', '$report','$hname','$status')";
             mysqli_query($dbc, $query);
 
             // Confirm success with the user
@@ -155,24 +210,39 @@ $hname=	$_SESSION['username'];
     }
   
 ?>
-<div ng-repeat="name in data " class=" row">
+<div ng-repeat="name in data|filter:patient " class="row patient_info">
   
     <div class="col-md-4 col-xs-12 col-sm-12"></div>
    <div class="col-md-4 col-xs-12 col-sm-12 box-shadow">
     <div class="row">
-     <div class="col-md-6 col-xs-12 col-sm-12">Patient Id</div>
+     <div class="col-md-6 col-xs-12 col-sm-12"><h4>Patient Id</h4></div>
       <div class="col-md-6 col-xs-12 col-sm-12">{{name.p_id}}</div>
     </div>
   <div class="row">
-     <div class="col-md-6 col-xs-12 col-sm-12">Patient Name</div>
+     <div class="col-md-6 col-xs-12 col-sm-12"><h4>Patient Name</h4></div>
       <div class="col-md-6 col-xs-12 col-sm-12">{{name.p_name}}</div>
     </div>
   <div class="row">
-     <div class="col-md-6 col-xs-12 col-sm-12">Patient Report</div>
+     <div class="col-md-6 col-xs-12 col-sm-12"><h4>Patient Report</h4></div>
       <div class="col-md-6 col-xs-12 col-sm-12"><a href="files/{{name.p_file}}" target="_blank">{{name.p_file}}</a></div>
     </div>
   
+  <div class="row">
+     <div class="col-md-6 col-xs-12 col-sm-12" ><h4>Status</h4></div>
+      <div class="col-md-6 col-xs-12 col-sm-12" ><a href="files/{{name.sreport}}" target="_blank">{{name.status}}</a></div>
+    </div>
+    <div class="row">
+     <div class="textarea text-center col-md-12 col-xs-12 col-sm-12" ><h4>Doctors Advice For You:</h4></div>
    </div>
+  
+      <div class=" textarea text-center col-md-12 col-xs-12 col-sm-12" >{{name.comment}}</div>
+      <div class="row">
+         <?php
+  echo '<a  type="button"class="btn btn-primary" href="submitp.php?id=' . "{{name.p_id}}".'"><h5>Add Report</h5></a><BR/>';
+  ?>
+      </div>
+    </div>
+ 
 <div class="col-md-4"></div>
  
 </div>
