@@ -35,13 +35,13 @@ indexapp.controller('maincontroller',function($scope){
          	         
 });
 indexapp.controller('indexcontroller',function($scope,$http){
-  $http.get("http://localhost/hospitalp/jsonmain.php")
+  $http.get("http://localhost/hospital/jsonmain.php")
   .success(function (data) {$scope.data = data;
   console.log($scope.data)});
   
 });
 indexapp.controller('primarycontroller',function($scope,$http){
-  $http.get("http://localhost/hospitalp/jsonprimary.php")
+  $http.get("http://localhost/hospital/jsonprimary.php")
   .success(function (data) {$scope.data = data;
   console.log($scope.data)});
   
