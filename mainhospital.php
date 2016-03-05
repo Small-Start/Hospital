@@ -43,7 +43,7 @@ font-family: 'Montserrat', sans-serif;
  <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand" href="#">E-Village Aid</a>
     </div>
     <div>
       <ul class="nav navbar-nav">
