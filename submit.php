@@ -19,7 +19,7 @@ session_cache_limiter(false);
   }
 $id = $_GET['id'];
 
-$dbc = mysqli_connect('localhost','root','','healthcare')
+$dbc = mysqli_connect('localhost','root','abc123','healthcare')
 or
 die('error connecting to MySql server');
 $query = "SELECT * FROM patient_file WHERE p_id='$id'";
@@ -47,7 +47,7 @@ while ($row = mysqli_fetch_array($result)) {
            
 
             // Write the data to the database
-            $query1 = "INSERT INTO doc_report(p_id,sreport,comment,d_name,ddept,timestamp) VALUES ( '$id', '$sreport','$comment','$dname','$ddept',NOW())";
+            $query1 = "UPDATE patient_file SET sreport='$sreport',status='Active',comment='$comment',d_name='$dname',ddept='$ddept',timestamp=NOW() WHERE p_id='$id' ";
             mysqli_query($dbc, $query1);
 
             // Confirm success with the user
@@ -118,7 +118,7 @@ label{
    <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">E-Village Aid</a>
+      <a class="navbar-brand" href="#">WebSiteName</a>
     </div>
     <div>
       <ul class="nav navbar-nav">
