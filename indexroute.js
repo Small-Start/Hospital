@@ -2,7 +2,7 @@ var indexapp= angular.module('indexapp',['ngRoute','angular-loading-bar'])
 indexapp.config(['$routeProvider',function($routeProvider){
 	$routeProvider
 	.when('/',{
-		templateUrl:'main.html',
+		templateUrl:'main.php',
 		controller:'maincontroller'
 	     
 	})
