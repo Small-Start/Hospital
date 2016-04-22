@@ -76,7 +76,7 @@ font-family: 'Montserrat', sans-serif;
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
 
-      <li>   <a type="button" data-toggle="modal" data-target="#myModal">Register</a>
+      <li>   <a type="button" style="cursor:pointer;" data-toggle="modal" data-target="#myModal">Register</a>
 
 
 <div id="myModal" class="modal fade" role="dialog">
