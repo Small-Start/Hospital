@@ -9,7 +9,7 @@
   }
    if((!isset($_SESSION['usermain'])) && (!isset($_COOKIE['usermain'])))
   {
-	  $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/login-main.php';
+	  $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/#';
   header('Location: ' . $home_url);
   }
 ?>
