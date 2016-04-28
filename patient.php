@@ -2,6 +2,7 @@
 header("Cache-Control: private, must-revalidate, max-age=0");
   header("Pragma: no-cache");
   header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+  require_once("connectvars.php");
   ?>
 <html ng-app="health">
 
@@ -74,7 +75,7 @@ font-family: 'Montserrat', sans-serif;
     </div>
     <div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="http://<?php echo DB_HOST;?>/Hospital/#">Home</a></li>
 
       <li>   <a type="button" style="cursor:pointer;" data-toggle="modal" data-target="#myModal">Register</a>
 

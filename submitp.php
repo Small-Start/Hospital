@@ -13,6 +13,7 @@ session_start();
   {
     $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '#/primary';
   }
+  require_once("connectvars.php");
   ?>
 
   <html>
@@ -53,7 +54,7 @@ a.pull-right {
     </div>
     <div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="http://<?php echo DB_HOST;?>/Hospital/#">Home</a></li>
         <li><a href="#">Page 1</a></li>
         <li><a href="#">Page 2</a></li> 
         <li><?php echo ' <a href="logout.php">Log Out</a><span class="sessioncolor">(' . $_SESSION['username'] . ')</span><br/>';
