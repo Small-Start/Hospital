@@ -1,16 +1,15 @@
 <?php 
-$host = "localhost"; 
-$user = "root"; 
-$pass = ""; 
-$database = "healthcare"; 
-
-$linkID = mysql_connect($host, $user, $pass) or die("Could not connect to host."); 
-mysql_select_db($database, $linkID) or die("Could not find database."); 
-
-$query = mysql_query("SELECT * FROM user_main");
+require_once("connectvars.php");
+$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
+or
+die('error connecting to MySql server');
+$query = "SELECT * FROM user_main";
 $rows = array();
-while($row = mysql_fetch_assoc($query)) {
+$data = mysqli_query($dbc, $query);
+$rows = array();
+while($row = mysqli_fetch_assoc($data)) {
     $rows[] = $row;
 }
 print json_encode($rows);
+mysqli_close($dbc);
 ?>

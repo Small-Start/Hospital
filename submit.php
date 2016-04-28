@@ -1,8 +1,7 @@
 <?php
+  session_start();
 ini_set('session.cache_limiter','public');
 session_cache_limiter(false);
-  session_start();
-
   // If the session vars aren't set, try to set them with a cookie
   if (!isset($_SESSION['usermain'])) {
     if (isset($_COOKIE['usermain'])) {
@@ -18,10 +17,12 @@ session_cache_limiter(false);
 
   }
 $id = $_GET['id'];
+require_once("connectvars.php");
 
-$dbc = mysqli_connect('localhost','root','','healthcare')
+$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
 or
 die('error connecting to MySql server');
+
 $query = "SELECT * FROM patient_file WHERE p_id='$id'";
 $result = mysqli_query($dbc,$query)
 or
@@ -72,7 +73,7 @@ while ($row = mysqli_fetch_array($result)) {
     else {
       
     }
-	require_once("connectvars.php");
+	
  ?>
  <head>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -115,6 +116,10 @@ label{
   padding: 2%;
   margin:2%;
 }
+.active{
+  color:#337AB7;
+  font-weight: bolder;
+ }
   </style>
    <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -124,7 +129,10 @@ label{
     <div>
       <ul class="nav navbar-nav">
         <li class="active"><a href="http://<?php echo DB_HOST;?>/Hospital/#">Home</a></li>
-        <li><?php echo ' <a href="logout.php">Log Out</a><span class="sessioncolor">(' . $_SESSION['usermain'] . ')</span><br/>';
+        <li><?php
+if (isset($_SESSION['usermain'])) {
+    echo '<a href="logoutmain.php" type="button" class="btn btn-sm">Log Out </a><div class="active">(' . $_SESSION['usermain'] . ')</div>';
+  }
   ?></li> 
       </ul>
     </div>

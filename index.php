@@ -2,7 +2,7 @@
 
   session_start();
   
-
+require_once("connectvars.php");
    // If the session vars aren't set, try to set them with a cookie
   if (!isset($_SESSION['username'])) {
     if (isset($_COOKIE['username'])) {
@@ -16,13 +16,13 @@
   }
   if(isset($_SESSION['usermain']))
   {
-	 $home_url = 'http://localhost/Hospital/mainhospital.php';
+	 $home_url = 'http://'.DB_HOST.'/Hospital/mainhospital.php';
   header('Location: ' . $home_url);
   }
  if(isset($_SESSION['username']))
   { 
 
-  $home_url = 'http://localhost/Hospital/patient.php';
+  $home_url = 'http://'.DB_HOST.'/Hospital/patient.php';
   header('Location: ' . $home_url);
   }
   

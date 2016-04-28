@@ -176,7 +176,10 @@ $hname=	$_SESSION['username'];
           $target = 'files/' . $report;
           if (move_uploaded_file($_FILES['report']['tmp_name'], $target)) {
             // Connect to the database
-            $dbc = mysqli_connect('localhost','root', '', 'healthcare');
+            $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
+or
+die('error connecting to MySql server');
+
 
             // Write the data to the database
             $query = "INSERT INTO patient_file(p_id,p_name,gender,dob,disease,p_file,ph_name,status) VALUES ( '$pid', '$pname','$gender','$dob','$dis', '$report','$hname','$status')";

@@ -66,9 +66,10 @@ a.pull-right {
     
 $id = $_GET['id'];
 
-$dbc = mysqli_connect('localhost','root','','healthcare')
+$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
 or
 die('error connecting to MySql server');
+
 $query = "SELECT * FROM patient_file WHERE p_id='$id'";
 $result = mysqli_query($dbc,$query)
 or
