@@ -19,7 +19,7 @@ session_cache_limiter(false);
   }
 $id = $_GET['id'];
 
-$dbc = mysqli_connect('localhost','root','abc123','healthcare')
+$dbc = mysqli_connect('localhost','root','','healthcare')
 or
 die('error connecting to MySql server');
 $query = "SELECT * FROM patient_file WHERE p_id='$id'";
