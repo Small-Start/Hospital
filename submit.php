@@ -72,6 +72,7 @@ while ($row = mysqli_fetch_array($result)) {
     else {
       
     }
+	require_once("connectvars.php");
  ?>
  <head>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -118,13 +119,11 @@ label{
    <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand" href="#">E-Village Aid</a>
     </div>
     <div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Page 1</a></li>
-        <li><a href="#">Page 2</a></li> 
+        <li class="active"><a href="http://<?php echo DB_HOST;?>/Hospital/#">Home</a></li>
         <li><?php echo ' <a href="logout.php">Log Out</a><span class="sessioncolor">(' . $_SESSION['usermain'] . ')</span><br/>';
   ?></li> 
       </ul>

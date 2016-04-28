@@ -55,8 +55,6 @@ a.pull-right {
     <div>
       <ul class="nav navbar-nav">
         <li class="active"><a href="http://<?php echo DB_HOST;?>/Hospital/#">Home</a></li>
-        <li><a href="#">Page 1</a></li>
-        <li><a href="#">Page 2</a></li> 
         <li><?php echo ' <a href="logout.php">Log Out</a><span class="sessioncolor">(' . $_SESSION['username'] . ')</span><br/>';
   ?></li> 
       </ul>
