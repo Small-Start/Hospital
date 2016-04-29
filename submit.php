@@ -52,7 +52,9 @@ while ($row = mysqli_fetch_array($result)) {
             mysqli_query($dbc, $query1);
 
             // Confirm success with the user
-           
+            $query2 = "INSERT INTO doc_report(p_id,sreport,comment,d_name,ddept,timestamp) VALUES('$id','$sreport','$comment','$dname','$ddept',NOW())";
+            mysqli_query($dbc, $query2);
+
             echo "Information is shared with the primary hospital";
             // Clear the score data to clear the form
     
