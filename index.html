@@ -9,12 +9,26 @@
 <script type="text/javascript" src="jquery.backstretch.min.js"></script>
 <script type="text/javascript" src="angular-loader/build/loading-bar.js"></script>
 <script src="indexroute.js"></script>
-
-
 </head>
-
+<style>
+#fork {
+  transform:translate(50%, -50%) rotate(45deg) translate(0, 5em);
+  border:dashed 1px #00B7F7;
+  background-color: #444;
+  position:absolute;
+  top:0;
+  right:0;
+  color: white;
+  width: 150px;
+  text-align: center;
+  padding: 2px;
+  z-index:100;
+}
+</style>
 <body>
-
+<a href="https://github.com/Small-Start/Hospital">
+  <p id="fork">Contribute</p>
+</a>
 <div class="ng-view"></div>
 </body>
 <script>
