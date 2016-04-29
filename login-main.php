@@ -8,8 +8,10 @@
   if (!isset($_SESSION['usermain'])) {
     if (isset($_POST['submit'])) {
       // Connect to the database
-      $dbc = mysqli_connect('localhost','root','','healthcare');
-
+      require_once("connectvars.php");
+$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
+or
+die('error connecting to MySql server');
       // Grab the user-entered log-in data
       $user_username = $_POST['mainid'];
       $user_password = mysqli_real_escape_string($dbc, trim($_POST['mainpass']));
@@ -75,6 +77,17 @@ font-family: 'Montserrat', sans-serif;
   if (empty($_SESSION['usermain'])) {
     echo '<p class="error">' . $error_msg . '</p>';
 ?>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">E-village Aid</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        
+      </ul>
+</nav>  
 
 <div class="row">
 <div class="col-md-offset-3 col-md-6">

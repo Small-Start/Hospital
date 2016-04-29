@@ -9,9 +9,10 @@
   }
    if((!isset($_SESSION['usermain'])) && (!isset($_COOKIE['usermain'])))
   {
-	  $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/login-main.php';
+	  $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/#';
   header('Location: ' . $home_url);
   }
+  require_once("connectvars.php");
 ?>
 <html ng-app="mainhospital">
 <head >
@@ -47,9 +48,7 @@ font-family: 'Montserrat', sans-serif;
     </div>
     <div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Page 1</a></li>
-        <li><a href="#">Page 2</a></li> 
+        <li class="active"><a href="http://<?php echo DB_HOST;?>/Hospital/#">Home</a></li>
         <li><?php
 if (isset($_SESSION['usermain'])) {
     echo '<a href="logoutmain.php" type="button" class="btn btn-sm">Log Out </a><div class="active">(' . $_SESSION['usermain'] . ')</div>';

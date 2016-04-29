@@ -2,6 +2,7 @@
 header("Cache-Control: private, must-revalidate, max-age=0");
   header("Pragma: no-cache");
   header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+  require_once("connectvars.php");
   ?>
 <html ng-app="health">
 
@@ -18,7 +19,7 @@ header("Cache-Control: private, must-revalidate, max-age=0");
   }
    if((!isset($_SESSION['username'])) && (!isset($_COOKIE['username'])))
   {
-	  $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/login-primary.php';
+	  $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/#';
   header('Location: ' . $home_url);
   }
 ?>
@@ -74,9 +75,9 @@ font-family: 'Montserrat', sans-serif;
     </div>
     <div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="http://<?php echo DB_HOST;?>/Hospital/#">Home</a></li>
 
-      <li>   <a type="button" data-toggle="modal" data-target="#myModal">Register</a>
+      <li>   <a type="button" style="cursor:pointer;" data-toggle="modal" data-target="#myModal">Register</a>
 
 
 <div id="myModal" class="modal fade" role="dialog">
@@ -175,7 +176,10 @@ $hname=	$_SESSION['username'];
           $target = 'files/' . $report;
           if (move_uploaded_file($_FILES['report']['tmp_name'], $target)) {
             // Connect to the database
-            $dbc = mysqli_connect('localhost','root', '', 'healthcare');
+            $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
+or
+die('error connecting to MySql server');
+
 
             // Write the data to the database
             $query = "INSERT INTO patient_file(p_id,p_name,gender,dob,disease,p_file,ph_name,status) VALUES ( '$pid', '$pname','$gender','$dob','$dis', '$report','$hname','$status')";
