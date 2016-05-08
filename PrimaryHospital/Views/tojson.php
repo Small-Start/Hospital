@@ -1,6 +1,7 @@
+
 <?php 
  session_start();
-require_once("connectvars.php");
+
    // If the session vars aren't set, try to set them with a cookie
   if (!isset($_SESSION['username'])) {
     if (isset($_COOKIE['username'])) {
@@ -10,17 +11,18 @@ require_once("connectvars.php");
  if (isset($_SESSION['username'])) {
  $name=$_SESSION['username'];
  }
-$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
-or
-die('error connecting to MySql server');
+$host = "localhost"; 
+$user = "root"; 
+$pass = ""; 
+$database = "healthcare"; 
 
-$query = "SELECT * FROM patient_file WHERE ph_name='$name'";
-$data = mysqli_query($dbc, $query);
+$linkID = mysql_connect($host, $user, $pass) or die("Could not connect to host."); 
+mysql_select_db($database, $linkID) or die("Could not find database."); 
+
+$query = mysql_query("SELECT * FROM patient_file WHERE ph_name='$name'");
 $rows = array();
-while($row = mysqli_fetch_assoc($data)) {
+while($row = mysql_fetch_assoc($query)) {
     $rows[] = $row;
 }
 print json_encode($rows);
-mysqli_close($dbc);
 ?>
-

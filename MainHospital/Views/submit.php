@@ -1,7 +1,8 @@
 <?php
-  session_start();
 ini_set('session.cache_limiter','public');
 session_cache_limiter(false);
+  session_start();
+
   // If the session vars aren't set, try to set them with a cookie
   if (!isset($_SESSION['usermain'])) {
     if (isset($_COOKIE['usermain'])) {
@@ -10,19 +11,17 @@ session_cache_limiter(false);
   }
    if((!isset($_SESSION['usermain'])) && (!isset($_COOKIE['usermain'])))
   {
-	  $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/login-main.php';
+	  $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/Main Hospital/Views/login-main.php';
   header('Location: ' . $home_url);
   }
   if (isset($_SESSION['usermain'])) {
 
   }
 $id = $_GET['id'];
-require_once("connectvars.php");
 
-$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
+$dbc = mysqli_connect('localhost','root','','healthcare')
 or
 die('error connecting to MySql server');
-
 $query = "SELECT * FROM patient_file WHERE p_id='$id'";
 $result = mysqli_query($dbc,$query)
 or
@@ -48,13 +47,11 @@ while ($row = mysqli_fetch_array($result)) {
            
 
             // Write the data to the database
-            $query1 = "UPDATE patient_file SET sreport='$sreport',status='Active',comment='$comment',d_name='$dname',ddept='$ddept',timestamp=NOW() WHERE p_id='$id' ";
+            $query1 = "INSERT INTO doc_report(p_id,sreport,comment,d_name,ddept,timestamp) VALUES ( '$id', '$sreport','$comment','$dname','$ddept',NOW())";
             mysqli_query($dbc, $query1);
 
             // Confirm success with the user
-            $query2 = "INSERT INTO doc_report(p_id,sreport,comment,d_name,ddept,timestamp) VALUES('$id','$sreport','$comment','$dname','$ddept',NOW())";
-            mysqli_query($dbc, $query2);
-
+           
             echo "Information is shared with the primary hospital";
             // Clear the score data to clear the form
     
@@ -75,14 +72,13 @@ while ($row = mysqli_fetch_array($result)) {
     else {
       
     }
-	
  ?>
  <head>
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="w3.css">
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/w3.css">
 <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="jquery.min.js"></script>
-<script type="text/javascript" src="jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.backstretch.min.js"></script>
  </head>
 
  <style>
@@ -118,10 +114,6 @@ label{
   padding: 2%;
   margin:2%;
 }
-.active{
-  color:#337AB7;
-  font-weight: bolder;
- }
   </style>
    <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -130,11 +122,10 @@ label{
     </div>
     <div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="http://<?php echo DB_HOST;?>/Hospital/#">Home</a></li>
-        <li><?php
-if (isset($_SESSION['usermain'])) {
-    echo '<a href="logoutmain.php" type="button" class="btn btn-sm">Log Out </a><div class="active">(' . $_SESSION['usermain'] . ')</div>';
-  }
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Page 1</a></li>
+        <li><a href="#">Page 2</a></li> 
+        <li><?php echo ' <a href="logoutmain.php">Log Out</a><span class="sessioncolor">(' . $_SESSION['usermain'] . ')</span><br/>';
   ?></li> 
       </ul>
     </div>
@@ -217,9 +208,9 @@ mysqli_close($dbc);
 </form>
 <script>
  $.backstretch([
-      "HOSPITALHEART_1stblue.jpg",
-      "HOSPITALHEART1_midblue.jpg",
-      "HOSPITALHEART1_lastblue.jpg"    
+      "../../HOSPITALHEART_1stblue.jpg",
+      "../../HOSPITALHEART1_midblue.jpg",
+      "../../HOSPITALHEART1_lastblue.jpg"    
       ], {
         fade: 1050,
         duration: 500
