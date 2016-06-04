@@ -17,13 +17,13 @@ require_once("connectvars.php");
   }
   if(isset($_SESSION['usermain']))
   {
-	 $home_url = 'http://'.DB_HOST.'/Hospital/mainhospital.php';
+	 $home_url = 'http://'.DB_HOST.'/Hospital/Main-Hospital/mainhospital.php';
   header('Location: ' . $home_url);
   }
  if(isset($_SESSION['username']))
   { 
 
-  $home_url = 'http://'.DB_HOST.'/Hospital/patient.php';
+  $home_url = 'http://'.DB_HOST.'/Hospital/Primary-Hospital/patient.php';
   header('Location: ' . $home_url);
   }
   
@@ -33,12 +33,12 @@ require_once("connectvars.php");
 	<title>Admin page</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="angular-loader/build/loading-bar.css">
-<script type="text/javascript" src="angular.min.js"></script>
-<script type="text/javascript" src="angular-route.min.js"></script>
-<script type="text/javascript" src="jquery.min.js"></script>
-<script type="text/javascript" src="jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/angular-route.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.backstretch.min.js"></script>
 <script type="text/javascript" src="angular-loader/build/loading-bar.js"></script>
-<script src="indexroute.js"></script>
+<script src="js/indexroute.js"></script>
 
 
 </head>
