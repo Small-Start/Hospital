@@ -173,7 +173,7 @@ $hname=	$_SESSION['username'];
      
         if ($_FILES['report']['error'] == 0) {
           // Move the file to the target upload folder
-          $target = 'files/' . $report;
+          $target = '../files/' . $report;
           if (move_uploaded_file($_FILES['report']['tmp_name'], $target)) {
             // Connect to the database
             $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
@@ -189,7 +189,7 @@ die('error connecting to MySql server');
             echo '<p>Thanks for adding your new high score! It will be reviewed and added to the high score list as soon as possible.</p>';
             echo '<p><strong>ID:<strong> ' . $pid . '<br />';
             echo '<strong>Name:</strong> ' . $pname . '<br />';
-            echo '<a href="' . 'files/' . $report . '" target="_blank" />view file</a></p>';
+            echo '<a href="' . '../files/' . $report . '" target="_blank" />view file</a></p>';
              
 
             // Clear the score data to clear the form
@@ -228,12 +228,12 @@ die('error connecting to MySql server');
     </div>
   <div class="row">
      <div class="col-md-6 col-xs-12 col-sm-12"><h4>Patient Report</h4></div>
-      <div class="col-md-6 col-xs-12 col-sm-12"><a href="files/{{name.p_file}}" target="_blank">{{name.p_file}}</a></div>
+      <div class="col-md-6 col-xs-12 col-sm-12"><a href="../files/{{name.p_file}}" target="_blank">{{name.p_file}}</a></div>
     </div>
   
   <div class="row">
      <div class="col-md-6 col-xs-12 col-sm-12" ><h4>Status</h4></div>
-      <div class="col-md-6 col-xs-12 col-sm-12" ><a href="files/{{name.sreport}}" target="_blank">{{name.status}}</a></div>
+      <div class="col-md-6 col-xs-12 col-sm-12" ><a href="../files/{{name.sreport}}" target="_blank">{{name.status}}</a></div>
     </div>
     <div class="row">
      <div class="textarea text-center col-md-12 col-xs-12 col-sm-12" ><h4>Doctors Advice For You:</h4></div>
