@@ -66,8 +66,8 @@ font-family: 'Montserrat', sans-serif;
 <html >
 <head>
 	<title>Main page</title>
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-<script type="text/javascript" src="../backsketch.js/jquery.backsketch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script type="text/javascript" src="backsketch.js/jquery.backsketch.min.js"></script>
 
 <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 </head>

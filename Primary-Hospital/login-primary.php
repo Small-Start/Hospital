@@ -53,7 +53,7 @@ die('error connecting to MySql server');
 <html>
 <head>
 	<title>Admin page</title>
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
 </head>
 <style>
