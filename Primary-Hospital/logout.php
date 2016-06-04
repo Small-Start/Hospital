@@ -1,5 +1,6 @@
 <?php
   // If the user is logged in, delete the session vars to log them out
+      require_once("connectvars.php");
   session_start();
   if (isset($_SESSION['username'])) {
     // Delete the session vars by clearing the $_SESSION array
@@ -19,6 +20,6 @@
   setcookie('username', '', time() - 3600);
 
   // Redirect to the home page
-  $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/#';
+$home_url = 'http://' . $_SERVER['HTTP_HOST'] . '/'.Host.'/#';
   header('Location: ' . $home_url);
 ?>

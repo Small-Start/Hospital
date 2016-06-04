@@ -5,13 +5,13 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
-<script type="text/javascript" src="jquery.min.js"></script>
-<script type="text/javascript" src="jquery.backstretch.min.js"></script>
-<script type="text/javascript" src="angular.min.js"></script>
-<script type="text/javascript" src="angular-route.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/angular-route.min.js"></script>
 
-<script src="indexroute.js"></script>
-<script src="app.js"></script>
+<script src="js/indexroute.js"></script>
+<script src="js/app.js"></script>
 
 
 
