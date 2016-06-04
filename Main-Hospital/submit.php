@@ -42,7 +42,7 @@ while ($row = mysqli_fetch_array($result)) {
      
         if ($_FILES['sreport']['error'] == 0) {
           // Move the file to the target upload folder
-          $target = 'mfiles/' . $sreport;
+          $target = '../mfiles/' . $sreport;
           if (move_uploaded_file($_FILES['sreport']['tmp_name'], $target)) {
             // Connect to the database
            
@@ -78,11 +78,11 @@ while ($row = mysqli_fetch_array($result)) {
 	
  ?>
  <head>
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="w3.css">
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/w3.css">
 <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="jquery.min.js"></script>
-<script type="text/javascript" src="jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.backstretch.min.js"></script>
  </head>
 
  <style>
@@ -217,9 +217,9 @@ mysqli_close($dbc);
 </form>
 <script>
  $.backstretch([
-      "HOSPITALHEART_1stblue.jpg",
-      "HOSPITALHEART1_midblue.jpg",
-      "HOSPITALHEART1_lastblue.jpg"    
+      "../HOSPITALHEART_1stblue.jpg",
+      "../HOSPITALHEART1_midblue.jpg",
+      "../HOSPITALHEART1_lastblue.jpg"    
       ], {
         fade: 1050,
         duration: 500
