@@ -22,7 +22,7 @@ Currently we have covered some of the Hospitals of Delhi ,India .
 ## Setup
 - Fork and clone the repository.
 - Import database files from root directory.
-- Run project on locahost (index.php from root). 
+- Run project on localhost (index.php from root). 
 
 ###<a href="http://hospitalp.esy.es/hospitalp/#/">Live version</a> 
 To test use abc123 ( as password ).
