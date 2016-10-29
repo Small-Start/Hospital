@@ -7,6 +7,22 @@ The Hospital Project aims to relate various City Hospitals in the Country with t
 all the services like prescription report from city hospital doctors to the patients of village hospital.
 A set of village Hospitals comes under a City Hospital , according to their location .
 Currently we have covered some of the Hospitals of Delhi ,India . 
+
+## Technology Stack
+### Frontend
+- HTML5
+- CSS3
+- AngularJS 
+- Bootstrap
+### Backend
+- Php
+- MySQL
+
+## Setup
+- Fork and clone the repository.
+- Import database files from root directory.
+- Run project on locahost (index.php from root). 
+
 ###<a href="http://hospitalp.esy.es/hospitalp/#/">Live version</a> 
 To test use abc123 ( as password ).
 
